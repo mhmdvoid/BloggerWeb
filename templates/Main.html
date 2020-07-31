@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Material Design Bootstrap</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+
+  <link href="{% static 'Blogger/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'Blogger/css/mdb.min.css' %}" rel="stylesheet">
+  <link href="{% static 'Blogger/css/style.min.css' %}" rel="stylesheet">
+  <link href="{% static 'Blogger/css/tagsStyle.css' %}" rel="stylesheet">
+    {% block mycss %}
+
+
+    {% endblock %}
+</head>
+<body>
+<!-- nav Bar -->
+{% include 'NavBar.html' %}
+
+
+{% block content %}
+
+{% endblock %}
+<!-- Footer -->
+
+
+{% include 'Footer.html' %}
+
+{% block js %}
+{% endblock %}
+
+  <script type="text/javascript" src="{% static 'Blogger/js/jquery-3.4.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'Blogger/js/popper.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'Blogger/js/bootstrap.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'Blogger/js/mdb.min.js' %}"></script>
+
+
+  <script type="text/javascript">
+
+     if (!('{{ request.user.writer }}' === '')) {
+    document.getElementById('logout').addEventListener('click', (e) => {
+          if (confirm('wanna logout ?')) {
+              e.target.setAttribute('href', '{% url 'account_logout' %}')
+          }
+      })
+     }
+
+
+    // Animations initialization
+    new WOW().init();
+
+
+const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+
+signUpButton.addEventListener('click', () => {
+    container.classList.add('right-panel-active');
+});
+
+signInButton.addEventListener('click', () => {
+    container.classList.remove('right-panel-active');
+});
+  </script>
+
+
+
+</body>
+</html>

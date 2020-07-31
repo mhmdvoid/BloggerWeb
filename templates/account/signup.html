@@ -1,0 +1,122 @@
+{% extends 'Main.html' %}
+{% load static %}
+{% load account socialaccount %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block mycss %}
+    <link rel="stylesheet" href="{% static 'Blogger/css/logSignup.css' %}">
+{% endblock %}
+{% block content %}
+<hr>
+<hr>
+    <br>
+    <br>
+{% get_providers as socialaccount_providers %}
+<div class="container" id="container">
+    <div class="form-container sign-up-container">
+        <!-- Sign Up form code goes here -->
+            <form action="#">
+        <h1>Create Account</h1>
+        <div class="social-container">
+            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <span>or use your email for registration</span>
+        <input type="text" placeholder="Name" />
+        <input type="email" placeholder="Email" />
+        <input type="password" placeholder="Password" />
+        <button>Sign Up</button>
+    </form>
+    </div>
+
+    <div class="form-container sign-in-container">
+        <!-- Sign In form code goes here -->
+            <form action="{% url 'account_login' %}" method="post">
+                {% csrf_token %}
+        <h1>Log in</h1>
+        <div class="social-container">
+            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <span>or use your account</span>
+        <input type="text" placeholder="username" />
+        <input type="password" placeholder="Password" />
+        <a href="#">Forgot your password?</a>
+        <button>Log In</button>
+    </form>
+    </div>
+
+    <div class="overlay-container">
+        <!-- The overlay code goes here -->
+          <div class="overlay">
+        <div class="overlay-panel overlay-left">
+            <h1>Welcome Back!</h1>
+            <p>
+                To keep connected with us please login with your personal info
+            </p>
+            <button class="ghost" id="signIn">Sign In</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+            <h1>Hello, Friend!</h1>
+            <p>Enter your personal details and start journey with us</p>
+            <button class="ghost" id="signUp">Sign Up</button>
+        </div>
+    </div>
+    </div>
+</div>
+
+{#{% if socialaccount_providers %}#}
+{#<p>{% blocktrans with site.name as site_name %}, <a href="{{ signup_url }}"></a>#}
+{#{{ site_name }} :{% endblocktrans %}</p>#}
+{##}
+{#<div class="socialaccount_ballot">#}
+{##}
+{#  <ul class="socialaccount_providers">#}
+{#    {% include "socialaccount/snippets/provider_list.html" with process="login" %}#}
+{#  </ul>#}
+{##}
+{#  <div class="login-or">{% trans 'or' %}</div>#}
+{##}
+{#</div>#}
+{##}
+{#{% include "socialaccount/snippets/login_extra.html" %}#}
+{##}
+{#{% else %}#}
+{#<p>{% blocktrans %}If you have not created an account yet, then please#}
+{#<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>#}
+{#{% endif %}#}
+
+{#<h1>{% trans "Sign Up" %}</h1>#}
+
+{#<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>#}
+
+{##}
+{##}
+{##}
+{#<script type="text/javascript" >#}
+{#    let all_fields = document.getElementsByTagName('input');#}
+{#    all_fields[1].setAttribute('class', 'form-control');#}
+{##}
+{#    all_fields[2].setAttribute('class', 'form-control');#}
+{#    all_fields[3].setAttribute('class', 'form-control');#}
+{#    all_fields[4].setAttribute('class', 'form-control');#}
+{#    all_fields[4].style.marginLeft = 50 + 'px';#}
+{#    for (let i = 1 ; i < all_fields.length ; i ++) {#}
+{#        all_fields[i].style.marginLeft = 40 + 'px';#}
+{#    }#}
+{#    let all_labels = document.getElementsByTagName('label');#}
+{#        for (let i = 0 ; i < all_labels.length ; i ++) {#}
+{#        all_labels[i].style.marginLeft = 40 + 'px';#}
+{#    }#}
+{##}
+{##}
+{##}
+{##}
+{#</script>#}
+{% endblock %}
+
+
